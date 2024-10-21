@@ -3,8 +3,8 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 // Define the size of each grid cell and the canvas size
-const gridSize = 20;
-const canvasSize = 400;
+const gridSize = 30;
+const canvasSize = 600;
 
 // Initialize the snake with one segment at a specific position
 let snake = [{ x: gridSize * 5, y: gridSize * 5 }];
@@ -21,6 +21,12 @@ let isPaused = false;
 // Add a variable to track the home screen state
 let isHomeScreen = true;
 
+// Add a variable to track the score
+let score = 0;
+
+// Add a variable to hold best score
+let bestScore = 0;
+
 // Function to draw the game elements
 function draw() {
     // Clear the canvas
@@ -32,6 +38,9 @@ function draw() {
         ctx.font = '30px Arial';
         ctx.textAlign = 'center';
         ctx.fillText('Press Enter to Start', canvasSize / 2, canvasSize / 2);
+    
+        // Display the best score
+        ctx.fillText(`Best Score: ${bestScore}`, canvasSize / 2, canvasSize / 2 + 40);
         return;
     }
 
@@ -39,11 +48,17 @@ function draw() {
     ctx.fillStyle = 'green';
     snake.forEach(segment => {
         ctx.fillRect(segment.x, segment.y, gridSize, gridSize);
+        ctx.strokeStyle = 'rgba(74, 72, 72, 1)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(segment.x, segment.y, gridSize, gridSize);
     });
 
     // Draw the food
     ctx.fillStyle = 'red';
     ctx.fillRect(food.x, food.y, gridSize, gridSize);
+    ctx.strokeStyle = 'rgba(74, 72, 72, 1)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(food.x, food.y, gridSize, gridSize);
 
     // Draw pause message if the game is paused
     if (isPaused) {
@@ -83,6 +98,7 @@ function update() {
     // Check for collision with food
     if (head.x === food.x && head.y === food.y) {
         snake.push({});
+        score++;
         placeFood();
     }
 
@@ -112,6 +128,10 @@ function placeFood() {
 
 // Function to reset the game state
 function resetGame() {
+    if (score > bestScore) {
+        bestScore = score;
+        score = 0;
+    }
     snake = [{ x: gridSize * 5, y: gridSize * 5 }];
     direction = { x: 0, y: 0 };
     placeFood();

@@ -7,7 +7,24 @@
     <link rel="stylesheet" href="Snake.css">
 </head>
 <body>
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div class="container">
+        <h1>Snake Game</h1>
+        <div class="game-container">
+            <div class="canvas-container">
+                <canvas id="gameCanvas" width="600" height="600"></canvas>
+            </div>
+            <div class="info">
+                <h2>How to Play</h2>
+                <ul>
+                    <li>Press Enter to start the game</li>
+                    <li>Use arrow keys or 'WASD' to move the snake</li>
+                    <li>Press 'Escape' or 'P' to pause or resume the game</li>
+                    <li>Eat the red food to grow the snake</li>
+                    <li>Avoid Eating with yourself</li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <script src="snake.js"></script>
 </body>
 </html>

@@ -1,12 +1,72 @@
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
+    height: 100vh;
+    justify-content: center;
+    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center; /* Center the canvas horizontally */
+    align-items: flex-start; /* Align items at the top */
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    height: 100%;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center; /* Center the canvas within its container */
+    align-items: center;
+}
+
+.info {
+    flex: 0 0 300px; /* Fixed width for the info section */
+    padding: 20px 20px 0 20px; /* top right bottom left */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    height: calc(100% - 20px);
+}
+.info h2 {
+    margin-top: 0;
+    color: #555;
+}
+
+.info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.info li {
+    margin: 10px 0;
+    color: #666;
 }
 
 canvas {
     border: 2px solid #000;
+    background-color: #d6d2d2;
 }
